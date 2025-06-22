@@ -24,26 +24,8 @@ CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
 for platform in $PLATFORMS; do \
 
     case $platform in
-        nile)
-            DEVICE=$NILE;
-            DTBO="false";;
-        ganges)
-            DEVICE=$GANGES;
-            DTBO="false";;
         tama)
             DEVICE=$TAMA;
-            DTBO="true";;
-        kumano)
-            DEVICE=$KUMANO;
-            DTBO="true";;
-        seine)
-            DEVICE=$SEINE;
-            DTBO="true";;
-        edo)
-            DEVICE=$EDO;
-            DTBO="true";;
-        lena)
-            DEVICE=$LENA;
             DTBO="true";;
     esac
 

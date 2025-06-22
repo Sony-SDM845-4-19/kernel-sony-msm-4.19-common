@@ -44,15 +44,9 @@ else
     ANDROID_ROOT="$ANDROID_BUILD_TOP"
 fi
 
-NILE="discovery pioneer voyager"
-GANGES="kirin mermaid"
 TAMA="akari apollo akatsuki"
-KUMANO="griffin bahamut"
-SEINE="pdx201"
-EDO="pdx203 pdx206"
-LENA="pdx213"
 
-PLATFORMS="nile ganges tama kumano seine edo lena"
+PLATFORMS="tama"
 
 KERNEL_TOP=$ANDROID_ROOT/kernel/sony/msm-4.19
 
