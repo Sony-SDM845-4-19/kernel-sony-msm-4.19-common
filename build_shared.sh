@@ -50,6 +50,18 @@ for platform in $PLATFORMS; do \
                 echo "Logging to $KERNEL_TMP_DEVICE/build.log"
                 make $BUILD_ARGS_DEVICE > "$KERNEL_TMP_DEVICE/build.log" 2>&1;
 
+                # Check the size of the compiled kernel
+                actual_size=$(stat -c%s "$KERNEL_TMP_DEVICE/arch/arm64/boot/Image.gz-dtb")
+                max_size=$((16 * 1024 * 1024)) # 16MB
+
+                if (( actual_size > max_size )); then
+                    echo "================================================="
+                    echo "Error: Kernel size ($((actual_size / 1024)) KB) exceeds 16MB limit!"
+                    echo "Devices with an old bootloader have a kernel size limit of 16MB, and we must stay within that size."
+                    echo "================================================="
+                    exit 1
+                fi
+
                 echo "Copying new kernel image ..."
                 cp "$KERNEL_TMP_DEVICE/arch/arm64/boot/Image.gz-dtb" "$KERNEL_TOP/common-kernel/kernel-dtb-$device"
                 if [ "$DTBO" = "true" ]; then
